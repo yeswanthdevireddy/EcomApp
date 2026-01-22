@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginApi } from "../apis/auth";
 import { useAuth } from "../auth/AuthContext";
@@ -14,6 +14,11 @@ export default function UserLogin() {
       await loginApi(username, password);
       login({ username, role: "USER" });
       navigate("/user/dashboard");
+      
+    /*useEffect(()=>{
+    localStorage.setItem("user-type","USER")
+    },[login])*/
+
     } catch {
       alert("Invalid user credentials");
     }
@@ -26,13 +31,19 @@ export default function UserLogin() {
       <input type="password" onChange={e => setPassword(e.target.value)} />
       <button onClick={submit}>Login</button>
 
-      
+      <p>
+        New User? Click here to
+        <button onClick={() => navigate("/user/register")}>
+          Register
+        </button>
+      </p>
       <p>
         Not an User? Click here to 
            <button onClick={() => navigate("/admin/login")}>
              Login as Admin
            </button>
       </p>
+      
     </>
   );
 }

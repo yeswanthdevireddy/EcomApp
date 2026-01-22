@@ -12,11 +12,14 @@ export default function AdminLogin() {
   const submit = async () => {
     try {
       await loginApi(username, password);
-
-      // role comes from backend later (JWT/session)
       login({ username, role: "ADMIN" });
 
       navigate("/admin/dashboard");
+
+      /*useEffect(()=>{
+          localStorage.setItem("user-type","USER")
+      },[login])*/
+      
     } catch {
       alert("Invalid admin credentials");
     }
@@ -28,6 +31,13 @@ export default function AdminLogin() {
       <input onChange={e => setUsername(e.target.value)} />
       <input type="password" onChange={e => setPassword(e.target.value)} />
       <button onClick={submit}>Login</button>
+
+      <p>
+        New User? Click here to
+        <button onClick={() => navigate("/admin/register")}>
+          Register
+        </button>
+      </p>
 
       <p>
         Not an Admin? Click here to 

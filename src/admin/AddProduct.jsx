@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { addProduct } from "../apis/product";
 import { getCategories } from "../apis/category";
+import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
-
+   
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
 
@@ -82,6 +84,9 @@ function AddProduct() {
       </select>
 
       <button onClick={submit}>Save</button>
+
+      <br />
+      <button onClick={()=>navigate("/admin/dashboard")}>back to dashboard</button>
     </>
   );
 }
