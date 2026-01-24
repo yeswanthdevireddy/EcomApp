@@ -1,7 +1,7 @@
 import api from "../api/axios";
 
-export const addProduct = (product, categoryId) =>
-  api.post(`/products/private/add/${categoryId}`, product);
+export const addProduct = (product) =>
+  api.post("/products/private/add", product);
 
 export const searchProducts = (q) =>
   api.get(`/products/public/search?q=${q}`);

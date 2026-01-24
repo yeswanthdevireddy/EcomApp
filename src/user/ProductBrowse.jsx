@@ -12,8 +12,7 @@ export default function ProductBrowse() {
     searchProducts(q).then(r => setProducts(r.data));
   }, [q]);
 
-  const [category,setCategory] = useState();
-
+  
   return (
     <>
       <h2>Products</h2>

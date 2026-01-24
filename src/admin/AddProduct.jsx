@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { addProduct } from "../apis/product";
 import { getCategories } from "../apis/category";
-import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
    
-  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
 
@@ -22,23 +20,29 @@ function AddProduct() {
   }, []);
 
   const submit = async () => {
-    if (!selectedCategoryId) {
-      alert("Category is required");
-      return;
-    }
+  if (!selectedCategoryId) {
+    alert("Category is required");
+    return;
+  }
 
-    try {
-      await addProduct(product, selectedCategoryId);
-      alert("Product added successfully");
+  try {
+    await addProduct({
+      productName: product.productName,
+      price: Number(product.price),
+      stock: Number(product.stock),
+      categoryId: Number(selectedCategoryId)
+    });
 
-      // reset form
-      setProduct({ productName: "", price: "", stock: "" });
-      setSelectedCategoryId("");
-    } catch (err) {
-      alert("Failed to add product");
-      console.error(err);
-    }
-  };
+    alert("Product added successfully");
+
+    setProduct({ productName: "", price: "", stock: "" });
+    setSelectedCategoryId("");
+  } catch (err) {
+    alert("Failed to add product");
+    console.error(err);
+  }
+};
+
 
   return (
     <>
@@ -85,8 +89,6 @@ function AddProduct() {
 
       <button onClick={submit}>Save</button>
 
-      <br />
-      <button onClick={()=>navigate("/admin/dashboard")}>back to dashboard</button>
     </>
   );
 }
