@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function ProductBrowse() {
   const [q, setQ] = useState("");
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
-
+  
   useEffect(() => {
     searchProducts(q).then(r => setProducts(r.data));
   }, [q]);
