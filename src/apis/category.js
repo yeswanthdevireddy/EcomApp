@@ -5,3 +5,6 @@ export const addCategory = (categoryName) =>
 
 export const getCategories = () =>
   api.get("/category/public/all");
+
+export const deleteCategory = (categoryId) =>
+  api.delete('/category/private/${categoryId}');
