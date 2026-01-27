@@ -5,7 +5,7 @@ import RequireRole from "./auth/RequireRole";
 
 import AdminLogin from "./admin/AdminLogin";
 import UserLogin from "./user/UserLogin";
-import AdminDashboard from "./admin/AdminDashBoard";
+import AdminDashboard from "./admin/AdminDashboard";
 import UserDashboard from "./user/UserDashboard";
 
 import UserRegister from "./user/UserRegister";
