@@ -1,52 +1,52 @@
 import { useState } from "react";
 import { deleteProduct } from "./apis/product";
+import { useAuth } from "./auth/AuthContext";
+
 const Card = ({ product }) => {
-  const [quantity, setQuantity] = useState(1);
-
-  const handleIncrease = () => {
-    setQuantity(q => q + 1);
-  };
-
-  const handleDecrease = () => {
-    setQuantity(q => (q > 1 ? q - 1 : q));
-  };
-
-  const handleDelete = async () => {
-    if (!window.confirm("Delete product?")) return;
-
-    try {
-      await deleteProduct(product.id);
-      alert("Product deleted");
-      window.location.reload(); // simple + OK for now
-    } catch (err) {
-      alert("Failed to delete product");
-      console.error(err);
-    }
-  };
+  const { user } = useAuth();
+  const role = user?.role;
+  const [qty, setQty] = useState(1);
 
   return (
     <div style={styles.card}>
       <h3>{product.productName}</h3>
-      <p>₹ {product.price}</p>
-      <p>Category: {product.categoryName}</p>
 
-      <button>Add to Cart</button>
+      {/* USER VIEW */}
+      {role === "ROLE_USER" && (
+        <>
+          <p>₹ {product.price}</p>
 
-      <div style={{ marginTop: 8 }}>
-        <button onClick={handleDecrease}>-</button>
-        <span style={{ margin: "0 8px" }}>{quantity}</span>
-        <button onClick={handleIncrease}>+</button>
-      </div>
+          <div>
+            <button onClick={() => setQty(q => Math.max(1, q - 1))}>-</button>
+            <span style={{ margin: "0 8px" }}>{qty}</span>
+            <button onClick={() => setQty(q => q + 1)}>+</button>
+          </div>
 
-      <button
-        onClick={handleDelete}
-        style={{ marginTop: 10, color: "red" }}
-      >
-        Delete
-      </button>
+          <button>Add to Cart</button>
+        </>
+      )}
+
+      {/* ADMIN VIEW */}
+      {role === "ROLE_ADMIN" && (
+        <>
+          <p>Category: {product.categoryName}</p>
+          <p>Stock: {product.stock}</p>
+          <p>Price: {product.price}</p>
+
+          <button
+            onClick={() => deleteProduct(product.id)}
+            style={{ color: "red" }}
+          >
+            Delete
+          </button>
+        </>
+      )}
     </div>
   );
 };
+
+export default Card;
+
 
 const styles = {
   card: {
@@ -58,4 +58,4 @@ const styles = {
   }
 };
 
-export default Card;
+

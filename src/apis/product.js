@@ -13,4 +13,4 @@ export const getAllProducts = () =>
   api.get("/products/public/all");
 
 export const deleteProduct = (productId) =>
-  api.delete('/products/private/${categoryId}');
+  api.delete(`/products/private/${productId}`);

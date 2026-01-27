@@ -17,3 +17,6 @@ export const registerUserApi = (data) =>
 
 export const registerAdminApi = (data) =>
   api.post("/admin/register", data);
+
+export const getMe = () => api.get("/auth/me");
+
