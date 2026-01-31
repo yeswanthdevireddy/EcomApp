@@ -12,7 +12,8 @@ export default function AdminLogin() {
   const submit = async () => {
     try {
       await loginApi(username, password);
-      login({ username, role: "ADMIN" });
+      login({ username, role: "ROLE_ADMIN" });
+
 
       navigate("/admin/dashboard");
 

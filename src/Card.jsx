@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { deleteProduct } from "./apis/product";
 import { useAuth } from "./auth/AuthContext";
+import { useCart } from "./context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ product }) => {
   const { user } = useAuth();
   const role = user?.role;
   const [qty, setQty] = useState(1);
+  const {addToCart} = useCart();
+  
+  
 
   return (
     <div style={styles.card}>
@@ -22,7 +27,7 @@ const Card = ({ product }) => {
             <button onClick={() => setQty(q => q + 1)}>+</button>
           </div>
 
-          <button>Add to Cart</button>
+          <button onClick={()=>{addToCart(product.id, qty),setQty(1)}}>Add to Cart</button>
         </>
       )}
 

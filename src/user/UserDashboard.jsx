@@ -8,6 +8,10 @@ export default function UserDashboard() {
       <ul>
         <li><Link to="/products">Products</Link></li>    
       </ul>
+
+      <ul>
+        <li><Link to="/user/cart">Go to Cart</Link></li>
+      </ul>
       
       <p>profile</p>
       <p>orders</p>

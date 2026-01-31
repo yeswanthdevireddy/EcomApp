@@ -14,6 +14,7 @@ import AdminRegister from "./admin/AdminRegister";
 import ProductBrowse from "./user/ProductBrowse";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
+import Cart from "./Cart";
 
 export default function App() {
   return (
@@ -32,10 +33,20 @@ export default function App() {
       <Route
         path="/user/dashboard"
         element={
-          <RequireRole role="USER">
-            <UserDashboard />
+          <RequireRole role="ROLE_USER">
+               <UserDashboard />
           </RequireRole>
+
         }
+      />
+
+      <Route
+       path="/user/cart"
+       element={
+        <RequireRole role="ROLE_USER">
+          <Cart/>
+        </RequireRole>
+       }
       />
 
       <Route
@@ -51,18 +62,17 @@ export default function App() {
       <Route
         path="/admin/dashboard"
         element={
-          <RequireRole role="ADMIN">
+          <RequireRole role="ROLE_ADMIN">
             <AdminDashboard />
           </RequireRole>
         }
       />
 
 
-
-      <Route
+       <Route
         path="/admin/category"
         element={
-          <RequireRole role="ADMIN">
+          <RequireRole role="ROLE_ADMIN">
             <AddCategory />
           </RequireRole>
         }
@@ -71,7 +81,7 @@ export default function App() {
       <Route
         path="/admin/product"
         element={
-          <RequireRole role="ADMIN">
+          <RequireRole role="ROLE_ADMIN">
             <AddProduct />
           </RequireRole>
         }

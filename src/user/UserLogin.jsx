@@ -12,12 +12,10 @@ export default function UserLogin() {
   const submit = async () => {
     try {
       await loginApi(username, password);
-      login({ username, role: "USER" });
+      login({ username, role: "ROLE_USER" });
+
       navigate("/user/dashboard");
       
-    /*useEffect(()=>{
-    localStorage.setItem("user-type","USER")
-    },[login])*/
 
     } catch {
       alert("Invalid user credentials");
