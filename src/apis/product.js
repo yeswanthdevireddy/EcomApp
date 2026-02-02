@@ -14,3 +14,6 @@ export const getAllProducts = () =>
 
 export const deleteProduct = (productId) =>
   api.delete(`/products/private/${productId}`);
+
+export const AdminProductsApi = ()=>
+  api.get("/products/private/added")

@@ -28,6 +28,7 @@ const Card = ({ product }) => {
           </div>
 
           <button onClick={()=>{addToCart(product.id, qty),setQty(1)}}>Add to Cart</button>
+          <span>Sold by:</span>
         </>
       )}
 

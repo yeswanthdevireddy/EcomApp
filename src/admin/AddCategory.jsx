@@ -20,8 +20,6 @@ function AddCategory()
         <h3>Add Category</h3>
         <input type="text" placeholder="enter category" value={name} onChange={e=>setName(e.target.value)} />
         <button onClick={submit}>Save</button>
-
-            <button onClick={handleDelete}>Delete</button>
                 
         </>
     )

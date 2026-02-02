@@ -15,6 +15,8 @@ import ProductBrowse from "./user/ProductBrowse";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import Cart from "./Cart";
+import AdminProducts from "./admin/AdminProducts";
+
 
 export default function App() {
   return (
@@ -68,6 +70,14 @@ export default function App() {
         }
       />
 
+      <Route
+        path="/admin/products"
+        element={
+          <RequireRole role="ROLE_ADMIN">
+            <AdminProducts />
+          </RequireRole>
+        }
+      />
 
        <Route
         path="/admin/category"

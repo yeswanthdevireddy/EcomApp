@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useAuth } from "../auth/AuthContext";
 import {
   getCartApi,
   addToCartApi,
@@ -8,9 +9,11 @@ import {
 
 const CartContext = createContext(null);
 
+
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
+  const {user} = useAuth();
 
   const loadCart = async () => {
     setLoading(true);
@@ -23,8 +26,10 @@ export const CartProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    loadCart();
-  }, []);
+    if (user?.role === "ROLE_USER") {
+      loadCart();
+    }
+  }, [user]);
 
 
   const addToCart = async (productId, qty = 1) => {
