@@ -2,7 +2,6 @@ import { useState } from "react";
 import { deleteProduct } from "./apis/product";
 import { useAuth } from "./auth/AuthContext";
 import { useCart } from "./context/CartContext";
-import { useNavigate } from "react-router-dom";
 
 const Card = ({ product }) => {
   const { user } = useAuth();

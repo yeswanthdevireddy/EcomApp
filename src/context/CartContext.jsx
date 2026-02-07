@@ -26,10 +26,10 @@ export const CartProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (user?.role === "ROLE_USER") {
-      loadCart();
-    }
-  }, [user]);
+  if (!loading && user?.role === "ROLE_USER") {
+    loadCart();
+  }
+}, [user, loading]);
 
 
   const addToCart = async (productId, qty = 1) => {

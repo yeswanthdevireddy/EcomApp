@@ -22,12 +22,31 @@ export default function UserLogin() {
     }
   };
 
+  const googleLogin = () => {
+  window.location.href =
+    "http://localhost:5050/oauth2/authorization/google";
+  };
+
   return (
     <>
       <h2>User Login</h2>
       <input onChange={e => setUsername(e.target.value)} />
       <input type="password" onChange={e => setPassword(e.target.value)} />
       <button onClick={submit}>Login</button>
+
+      <button
+        onClick={googleLogin}
+        style={{
+        marginTop: 12,
+        padding: "8px 12px",
+        background: "#fff",
+        border: "1px solid #ccc",
+        cursor: "pointer"
+        }}
+      >
+       Sign in with Google
+     </button>
+
 
       <p>
         New User? Click here to

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import HookForm from "../HookForm";
 
 export default function UserDashboard() {
   return (
@@ -12,6 +13,8 @@ export default function UserDashboard() {
       <ul>
         <li><Link to="/user/cart">Go to Cart</Link></li>
       </ul>
+      
+      <HookForm/>
       
       <p>profile</p>
       <p>orders</p>
