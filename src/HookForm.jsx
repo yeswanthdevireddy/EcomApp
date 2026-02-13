@@ -2,7 +2,7 @@ import { useForm, Controller, useFieldArray } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; // Don't forget the CSS!
 
-const HookForm = () => {
+const HookForm = ({closeModal}) => {
   const {
     register,
     control,
@@ -14,7 +14,7 @@ const HookForm = () => {
     defaultValues: {
       firstName: "",
       email: "",
-      age: Number,
+      age: 0,
       gender: "",
       address: { city: "", state: "" },
       startDate: new Date(),
@@ -36,6 +36,10 @@ const HookForm = () => {
       console.log("Form Data:", data);
      
       await new Promise((resolve) => setTimeout(resolve, 2000));
+      if(closeModal)
+      {
+        closeModal();
+      }
     } catch (error) {
       setError("root", { message: "Server error occurred" });
     }
@@ -112,10 +116,6 @@ const HookForm = () => {
         <div>
          
           <label>Hobbies</label>
-          <input
-          {...register(`hobbies.name`, { required: "Hobby is Required" })}
-           placeholder="Enter Hobby"
-          />
           {fields.map((field, index) => (
             <div key={field.id}>
               <input

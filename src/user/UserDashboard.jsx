@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import HookForm from "../HookForm";
+import FormModal from "../FormModal";
 
 export default function UserDashboard() {
   return (
@@ -13,11 +13,14 @@ export default function UserDashboard() {
       <ul>
         <li><Link to="/user/cart">Go to Cart</Link></li>
       </ul>
+
+      <ul>
+        <li><Link to="/orders">My Orders</Link></li>
+      </ul>
       
-      <HookForm/>
+      <FormModal/>
+
       
-      <p>profile</p>
-      <p>orders</p>
       <p>chat with agent</p>
     </>
   );

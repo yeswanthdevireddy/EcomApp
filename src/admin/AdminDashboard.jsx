@@ -3,6 +3,7 @@ import AddCategory from "./AddCategory";
 import AddProduct from "./AddProduct";
 import ProductBrowse from "../user/ProductBrowse";
 import AdminProducts from "./AdminProducts";
+import AdminSoldProducts from "./AdminSoldProducts";
 
 export default function AdminDashboard() {
   return (
@@ -12,8 +13,8 @@ export default function AdminDashboard() {
       <AddCategory/>
       <AddProduct/>
       <AdminProducts/>
+      <AdminSoldProducts/>
 
-      <p>items added</p>
     </>
   );
 }

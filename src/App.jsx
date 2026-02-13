@@ -18,6 +18,8 @@ import Cart from "./Cart";
 import AdminProducts from "./admin/AdminProducts";
 
 import OAuthSuccess from "./OAuthSuccess";
+import Orders from "./user/Orders";
+import AdminSoldProducts from "./admin/AdminSoldProducts";
 
 
 export default function App() {
@@ -106,6 +108,24 @@ export default function App() {
           </RequireRole>
         }
       />
+
+      <Route
+      path="/orders"
+      element={
+        <RequireRole role="ROLE_USER">
+           <Orders />
+        </RequireRole>
+      } />
+
+      <Route
+      path="/sales"
+      element={
+        <RequireRole role="ROLE_ADMIN">
+          <AdminSoldProducts />
+        </RequireRole>
+      }
+      />
+
 
     </Routes>
   );
