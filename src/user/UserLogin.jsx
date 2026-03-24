@@ -16,7 +16,6 @@ export default function UserLogin() {
 
       navigate("/user/dashboard");
       
-
     } catch {
       alert("Invalid user credentials");
     }

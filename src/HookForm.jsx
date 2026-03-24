@@ -70,6 +70,7 @@ const HookForm = ({closeModal}) => {
           {...register("age", {
             required: "Age is Required",
             min: { value: 18, message: "Minimum age is 18" },
+            max: {value: 100,message: "Maximum age is 100"}
           })}
           placeholder="Enter Age"
         />

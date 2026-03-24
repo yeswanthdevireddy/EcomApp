@@ -30,7 +30,8 @@ const AdminSoldProducts = () => {
           <p>Price: ₹{item.price}</p>
           <p>Quantity Sold: {item.quantity}</p>
           <p>Buyer: {item.buyerUsername}</p>
-          <p>Date: {item.orderDate}</p>
+          <p>Date: {new Date(item.orderDate).toLocaleString()}</p>
+
         </div>
       ))}
     </>
