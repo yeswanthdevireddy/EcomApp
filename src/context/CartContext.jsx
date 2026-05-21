@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  // 🔄 Load Cart
+  // Load Cart
   const loadCart = async () => {
     if (!user || user.role !== "ROLE_USER") return;
 
@@ -38,7 +38,7 @@ export const CartProvider = ({ children }) => {
     loadCart();
   }, [user?.id]);
 
-  // ➕ Add
+  //  Add
   const addToCart = async (productId, qty = 1) => {
     try {
       await addToCartApi(productId, qty);
@@ -48,7 +48,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // ➖ Decrease
+  //  Decrease
   const decreaseQuantity = async (productId) => {
     try {
       await decreaseQuantityApi(productId);
@@ -58,7 +58,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // ❌ Remove
+  //  Remove
   const removeFromCart = async (productId) => {
     try {
       await removeItemApi(productId);
@@ -68,7 +68,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // 💰 Checkout
+  //  Checkout
   const handleOrder = async () => {
     setCheckoutLoading(true);
 
@@ -88,7 +88,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // 🧮 Calculate total
+  //  Calculate total
   const totalAmount = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0

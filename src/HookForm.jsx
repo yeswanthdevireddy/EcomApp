@@ -1,6 +1,6 @@
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"; // Don't forget the CSS!
+import "react-datepicker/dist/react-datepicker.css"; 
 
 const HookForm = ({closeModal}) => {
   const {
@@ -126,7 +126,7 @@ const HookForm = ({closeModal}) => {
            
               <p>{errors.hobbies?.[index]?.name?.message}</p>
 
-              {fields.length > 0 && (
+              {fields.length > 1 && (
                 <button type="button" onClick={() => remove(index)}>
                   Remove
                 </button>

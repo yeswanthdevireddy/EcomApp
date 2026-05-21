@@ -79,7 +79,7 @@ function AddProduct() {
         value={selectedCategoryId}
         onChange={e => setSelectedCategoryId(e.target.value)}
       >
-        <option value="">Select category</option>
+        <option value="">Select Category</option>
         {categories.map(c => (
           <option key={c.id} value={c.id}>
             {c.categoryName}

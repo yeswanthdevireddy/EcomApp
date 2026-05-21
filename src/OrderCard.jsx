@@ -9,7 +9,7 @@ const OrderCard = ({ order }) => {
       background: "#f9f9f9"
     }}>
 
-      <h3>Order #{order.id}</h3>
+      <h3>Order # {order.id}</h3>
       <p><strong>Date:</strong> {new Date(order.createdAt).toLocaleString()}</p>
       <p><strong>Total:</strong> ₹{order.totalAmount}</p>
 

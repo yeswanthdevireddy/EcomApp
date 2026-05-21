@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // { username, role }
   const [isLoading, setIsLoading] = useState(true);
 
-  // 🔹 Restore session + role
+  // Restore session + role
   useEffect(() => {
     getMe()
       .then(res => {

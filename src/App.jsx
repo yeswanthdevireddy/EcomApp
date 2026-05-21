@@ -40,7 +40,7 @@ export default function App() {
         path="/user/dashboard"
         element={
           <RequireRole role="ROLE_USER">
-               <UserDashboard />
+            <UserDashboard />
           </RequireRole>
 
         }
